@@ -4,35 +4,39 @@ Created on Mon Sep  9 13:59:53 2019
 
 @author: Emanuel
 """
-
 import numpy as np
 import matplotlib.pyplot as plt
-import interpolator
 import in_out
+import interpolator
 import solver
 import visualizer
 
-#parameters set in input file
-M, xMin, xMax, nPoint, first, last, method, pot, x, y = in_out.params()
 
-#interpolated potential
-V = interpolator.interpolator(x,y,method)
+def schroedinger():
+    """
+    Solves the 1-dimensional stationary schroedinger equation
+    """
+   #parameters set in input file
+    params = in_out.params()
 
-#setting x-axis
-xnew=np.linspace(xMin,xMax,nPoint)
+   #interpolated POTENTIAL
+    potential = interpolator.interpolator(params['x_sup'], params['y_sup'], params['method'])
 
-#delta x
-delta=xnew[1]-xnew[0]
+   #setting x-axis
+    xnew = np.linspace(params['x_min'], params['x_max'], params['n_point'])
 
-#solver
-w, psi = solver.solver(V, M, xMin, xMax, nPoint)
+   #solverm
+    energies, psi = solver.solver(potential, params['mass'], params['x_min'],
+                                  params['x_max'], params['n_point'])
 
-#expectation values
-x_exp, sigma_x = solver.exp_values(psi, xMin, xMax, nPoint, first, last)
+   #expectation values
+    x_exp, sigma_x = solver.exp_values(psi, params['x_min'], params['x_max'], params['n_point'])
 
-#saving results to files
-in_out.output(V,w,psi,x_exp,sigma_x, xnew, first, last)
+   #saving results to files
+    in_out.output(potential, energies, psi, x_exp, sigma_x, xnew, params['first'], params['last'])
 
-#visualizing data
-visualizer.visualizer(psi, V, w, x_exp, sigma_x, xMin, xMax, nPoint, first, last)
+   #visualizing data
+    visualizer.visualizer(psi, potential, energies, x_exp, sigma_x, **params)
+
+schroedinger()
 plt.show()
