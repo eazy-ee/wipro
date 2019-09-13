@@ -4,12 +4,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 def visualizer(psi, potential, energies, x_exp, sigma_x, scale, **params):
-=======
-def visualizer(psi, potential, energies, x_exp, sigma_x, **params):
->>>>>>> 0e99165d292b14170ead09a40d4fe3392d11410f
-=======
-def visualizer(psi, potential, energies, x_exp, sigma_x, **params):
->>>>>>> 0e99165d292b14170ead09a40d4fe3392d11410f
     """script to plot wavefunctinos, energies, expectations values and uncertainty"""
 
     xnew = np.linspace(params['x_min'], params['x_max'], params['n_point'])
@@ -20,14 +14,8 @@ def visualizer(psi, potential, energies, x_exp, sigma_x, **params):
             color = 'blue'
         elif i%2 == 1:
             color = 'red'
-         #psi plot um w geschifted und gestreckt/gestaucht
+        #psi plot um w geschifted und gestreckt/gestaucht
         axs[0].plot(xnew, np.array(psi[i])*float(scale)+energies[i], color=color, linewidth=1)
-=======
-        axs[0].plot(xnew, psi[i]/3+energies[i], color=color, linewidth=1)
->>>>>>> 0e99165d292b14170ead09a40d4fe3392d11410f
-=======
-        axs[0].plot(xnew, psi[i]/3+energies[i], color=color, linewidth=1)
->>>>>>> 0e99165d292b14170ead09a40d4fe3392d11410f
         #transparenter grau ton für eigenwerte
         axs[0].axhline(energies[i], xmin=params['x_min'], xmax=params['x_max'],
                        linewidth=.3, color=(0, 0, 0, 0.75))
