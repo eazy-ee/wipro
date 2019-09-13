@@ -3,8 +3,10 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-<<<<<<< HEAD
 def visualizer(psi, potential, energies, x_exp, sigma_x, scale, **params):
+=======
+def visualizer(psi, potential, energies, x_exp, sigma_x, **params):
+>>>>>>> 0e99165d292b14170ead09a40d4fe3392d11410f
 =======
 def visualizer(psi, potential, energies, x_exp, sigma_x, **params):
 >>>>>>> 0e99165d292b14170ead09a40d4fe3392d11410f
@@ -19,8 +21,10 @@ def visualizer(psi, potential, energies, x_exp, sigma_x, **params):
         elif i%2 == 1:
             color = 'red'
          #psi plot um w geschifted und gestreckt/gestaucht
-<<<<<<< HEAD
         axs[0].plot(xnew, np.array(psi[i])*float(scale)+energies[i], color=color, linewidth=1)
+=======
+        axs[0].plot(xnew, psi[i]/3+energies[i], color=color, linewidth=1)
+>>>>>>> 0e99165d292b14170ead09a40d4fe3392d11410f
 =======
         axs[0].plot(xnew, psi[i]/3+energies[i], color=color, linewidth=1)
 >>>>>>> 0e99165d292b14170ead09a40d4fe3392d11410f
