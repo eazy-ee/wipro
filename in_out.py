@@ -7,18 +7,13 @@ import sys
 import numpy as np
 
 
-def params():
+def params(inp):
     """
     Reading inputfile.
 
     inp: Path to input file
     """
-    inp = input("""Please enter path to the input file if the file is not located in the same directory as the script file or if the filename is not \"schroedinger.inp\": """)
 
-    if inp == "":
-        inp = "./schroedinger.inp"
-    else:
-        inp = inp
     data = {'mass': 0, 'x_min': 0, 'x_max': 0, 'n_point': 0, 'first': 0,
             'last': 0, 'method': 0, 'pot': 0, 'x_sup': 0, 'y_sup': 0}
 
