@@ -7,7 +7,7 @@ import sys
 import numpy as np
 
 
-def params(inp):
+def params(file):
     """
     Reading inputfile.
 
@@ -17,7 +17,7 @@ def params(inp):
     data = {'mass': 0, 'x_min': 0, 'x_max': 0, 'n_point': 0, 'first': 0,
             'last': 0, 'method': 0, 'pot': 0, 'x_sup': 0, 'y_sup': 0}
 
-    with open(inp, 'r') as inp:
+    with open(file, 'r') as inp:
         try:
             for line in inp:
                 if 'mass' in line:
@@ -49,14 +49,18 @@ def params(inp):
 
 
 
-def output(potential, energies, wavefuncs, x_exp, sigma_x, xnew, first, last, path):#toomanyarguments
+def output(potential, energies, wavefuncs, x_exp, sigma_x, xnew, first, last, path):
     """
-    Save potential, eigenvalues, eigenfunctions, expactation value and uncertainty of x into the path folder.
+    Save potential, eigenvalues, eigenfunctions, expactation value
+    and uncertainty of x into the path folder.
     """
-    np.savetxt(str(path)+'potential.dat', np.concatenate((np.reshape(xnew, (1999, 1)),
-                                                np.reshape(potential(xnew), (1999, 1))), axis=1))
+    np.savetxt(str(path)+'potential.dat',
+               np.concatenate((np.reshape(xnew, (1999, 1)),
+                               np.reshape(potential(xnew), (1999, 1))), axis=1))
     np.savetxt(str(path)+'energies.dat', energies[first-1:last])
-    np.savetxt(str(path)+'wavefuncs.dat', np.concatenate((np.reshape(xnew, (1999, 1)),
-                                                np.transpose(wavefuncs[first-1:last])), axis=1))
-    np.savetxt(str(path)+'expvalues.dat', np.concatenate((np.reshape(x_exp, (1999, 1)),
-                                                np.reshape(sigma_x, (1999, 1))), axis=1))
+    np.savetxt(str(path)+'wavefuncs.dat',
+               np.concatenate((np.reshape(xnew, (1999, 1)),
+                               np.transpose(wavefuncs[first-1:last])), axis=1))
+    np.savetxt(str(path)+'expvalues.dat',
+               np.concatenate((np.reshape(x_exp, (1999, 1)),
+                               np.reshape(sigma_x, (1999, 1))), axis=1))
