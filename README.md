@@ -1,17 +1,17 @@
-<<<<<<< HEAD
 # wipro
+=======
 =======
 ***************************************************************
 Solver for Schroedinger-Equation in an one-dimensional potential
 ***************************************************************
 
-The executable Python programm solves the Schroedinger-Equation 
+The executable Python programm solves the Schroedinger-Equation
 for a one-dimensional potential depending on the data given in an input file
 and plots the results.
 
 Prerequisites
 ============
-The Solver needs Python 3 (version 3.5 or above), as well as the Numpy-, Scipy- 
+The Solver needs Python 3 (version 3.5 or above), as well as the Numpy-, Scipy-
 and Matplotlib-packages.
 
 Creating the input
@@ -30,13 +30,11 @@ and expectation values calculated by built-in functions of scipy.
 
 Input and Output
 ===============
-The in_out module reads the input file and saves the values in a dictionary which is 
+The in_out module reads the input file and saves the values in a dictionary which is
 then used in the other modules. Also it writes the arrays created by the solver module
 into .dat files.
 
 Tests
 =====
-The test files can be used with pytest to compare the results of the first version of 
+The test files can be used with pytest to compare the results of the first version of
 the programm to the results of any further changed programm version.
-
->>>>>>> 814b39be0419c4b739cbcd7ddbe8cde8e9d3b11b
