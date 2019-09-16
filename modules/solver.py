@@ -1,7 +1,5 @@
 """
-Created on Mon Sep  9 13:59:53 2019
-
-@author: Emanuel
+Script to find eigenvalues/eigenvectors of the 1-dim schroedinger equation and calculation expectation values of x for a given problem.
 """
 
 import numpy as np
@@ -10,6 +8,13 @@ from scipy import linalg as LA
 def solver(potential, mass, x_min, x_max, n_point):
     """
     Script to solve the 1-dimensional, stationary schroedinger equation for a given potential. Returns eigenvalues (energielevels) and normalised wavefunctions.
+
+    Args:
+        potential: Potential of the problem
+        mass: Mass of particle
+        x_min: Left end of the x-axis
+        x_max: Right end of the x-axis
+        n_point: Number of points the x-axis contains
     """
     #setting x-axis
     xnew = np.linspace(x_min, x_max, n_point)
@@ -31,6 +36,12 @@ def solver(potential, mass, x_min, x_max, n_point):
 def exp_values(wavefunc, x_min, x_max, n_point):
     """
     Calculating the expectation values and uncertainty of x. Returns $<x>$ and sigma_x
+
+    Args:
+        wavefunc: Previously calculated wavefunctions to the problem
+        x_min: Left end of the x-axis
+        x_max: Right end of the x-axis
+        n_point: Number of points the x-axis contains
     """
     #setting x-axis
     xnew = np.linspace(x_min, x_max, n_point)

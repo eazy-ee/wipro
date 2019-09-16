@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Sep 10 18:19:02 2019
-
-@author: Emanuel
+Script to find the intepolating function to a given set of support (x,y).
 
 """
 import sys
@@ -22,6 +20,14 @@ def interpolator(x_sup, y_sup, method):
     """
     Used to interpolate the Potential from a given set of points using a given method.
     The method can either be polynomial, linear or cspline (natural cubic spline)).
+
+    Args:
+        x_sup: Supporting x coordinates of the potential
+        y_sup: Supporting y coordinates of the potential
+        method: Either polynomial, linear or a cubi spline
+
+    Returns:
+        The interpolation function of the potential.
     """
     if method == 'polynomial':
         return poly(x_sup, y_sup)
@@ -31,4 +37,4 @@ def interpolator(x_sup, y_sup, method):
         return CubicSpline(x_sup, y_sup, bc_type='natural')
     print("\nInterpolation method doesn't exist. Chose either linear, polynomial or cspline.\n")
     sys.exit(1)
-     
+

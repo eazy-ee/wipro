@@ -1,4 +1,6 @@
-"""Module do visualize results and potential"""
+"""
+Creates a plot of the previously calculated results of 'schroedinger.py'
+"""
 
 
 import matplotlib.pyplot as plt
@@ -6,7 +8,15 @@ import numpy as np
 
 
 def visualizer(path, scale):
-    """script to plot wavefunctinos, energies, expectations values and uncertainty"""
+    """script to plot wavefunctinos, energies, expectations values and uncertainty
+
+    Args:
+        path: path to the output of a previous calculation
+        scale: Scales the wavefunctions
+
+    Returns:
+        matplotlib subplot containing two plots of given output.
+    """
     potential = np.loadtxt(str(path)+'potential.dat')
     psi = np.loadtxt(str(path)+'wavefuncs.dat')
     energies = np.loadtxt(str(path)+'energies.dat')
