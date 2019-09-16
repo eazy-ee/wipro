@@ -4,19 +4,18 @@
 Automatic tests using pytest. Compares results of the modules to reference data.
 """
 
+import os.path
 import numpy as np
 import pytest
-import os.path
 from modules import in_out as io
-from modules import solver as sv
 from modules import interpolator, solver
-import schroedinger
 
 
 TOLERANCE = 1e-10
 TESTDATADIR = 'references'
 
-TESTS_SUCCESSFUL = ['infinite_box', 'finite_box', 'harmonic', 'double_linear', 'double_cspline', 'asymmetric']
+TESTS_SUCCESSFUL = ['infinite_box', 'finite_box', 'harmonic',
+                    'double_linear', 'double_cspline', 'asymmetric']
 
 def _read_input(testname):
     """
@@ -61,7 +60,7 @@ def test_potential(testname):
     Args:
         testname: Name of the directory the reference data is in.
     """
-    pot_expected = _read_output(testname)['potential'][:,1]
+    pot_expected = _read_output(testname)['potential'][:, 1]
     x_sup = _read_input(testname)['x_sup']
     y_sup = _read_input(testname)['y_sup']
     x_min = _read_input(testname)['x_min']
@@ -75,11 +74,10 @@ def test_potential(testname):
 
     assert np.all(np.abs(pot_expected - pot_calc(xnew)) < TOLERANCE)
 
-    "compares energie eigenvalues with ref"
+    #compares energie eigenvalues with ref
     energies_exp = _read_output(testname)['energies']
     mass = _read_input(testname)['mass']
     energies_calc = solver.solver(pot_calc, mass, x_min,
-            x_max, n_point)[0][first-1:last]
+                                  x_max, n_point)[0][first-1:last]
 
     assert np.all(np.abs(energies_calc - energies_exp) < TOLERANCE)
-
