@@ -6,3 +6,6 @@ __pycache__/
 
 #pyinit
 __init__.py
+
+.spyderproject
+docs/_build
